@@ -18,15 +18,15 @@ public class AliMessage implements Message {
     private String url = "http://gw.api.taobao.com/router/rest";
     private String appkey = "23547902";
     private String secret = "411d353292ea57c0689579d84fad6fc8";
-    private TaobaoClient client = new DefaultTaobaoClient(url, appkey, secret);
 
     @Override
     public void sendMessage(String target, XinZhiModel.XinZhiModelResult.DailyBean daily) {
+        TaobaoClient client = new DefaultTaobaoClient(url, appkey, secret);
         AlibabaAliqinFcSmsNumSendRequest req = new AlibabaAliqinFcSmsNumSendRequest();
         req.setSmsType("normal");
-        req.setSmsFreeSignName("å­å…ƒå¤©æ°”");
+        req.setSmsFreeSignName("×ÓÔªÌìÆø");
         SmsWeather weather2 = new SmsWeather();
-        String content = String.format("%s %sâ„ƒ-%sâ„ƒ %sé£%sçº§", // å¤šäº‘ 1â„ƒ-12â„ƒ åŒ—å—é£3çº§
+        String content = String.format("%s %s¡æ-%s¡æ %s·ç%s¼¶", // ¶àÔÆ 1¡æ-12¡æ ±±ÄÏ·ç3¼¶
                 daily.getTextDay(),
                 daily.getLow(),
                 daily.getHigh(),
