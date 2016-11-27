@@ -24,10 +24,15 @@ public class App {
         List<Config.NumsBean> nums = config.getNums();
         WeatherClient<XinZhiModel> weatherClient = new DefaultWeatherClient();
         for (Config.NumsBean numBean : nums) {
-            XinZhiModel.XinZhiModelResult xinZhiModelResult = weatherClient.getDailyWeather(numBean.getLocation(), 0,
-                    1).getResults().get(0);
-            for (Message m : sender) {
-                m.sendMessage(numBean.getNum(), xinZhiModelResult.getDaily().get(0)); //TODO 增加天气接口
+            try {
+                List<XinZhiModel.XinZhiModelResult> results =
+                        weatherClient.getDailyWeather(numBean.getLocation(), 0, 1).getResults();
+                XinZhiModel.XinZhiModelResult xinZhiModelResult = results.get(0);
+                for (Message m : sender) {
+                    m.sendMessage(numBean.getNum(), xinZhiModelResult.getDaily().get(0)); //TODO 增加天气接口
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }

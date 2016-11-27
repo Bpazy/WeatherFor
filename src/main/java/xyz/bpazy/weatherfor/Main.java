@@ -6,10 +6,7 @@ import xyz.bpazy.weatherfor.impl.AliMessage;
 import xyz.bpazy.weatherfor.impl.App;
 import xyz.bpazy.weatherfor.models.Config;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.Calendar;
 import java.util.Timer;
 
@@ -30,14 +27,14 @@ public class Main {
                 app.addSender(new AliMessage());
                 app.run();
             }
-        }, calendar.getTime(), config.getInterval());
+        }, calendar.getTime(), config.getInterval() * 1000 * 60 * 60);
     }
 
     private static BufferedReader getConfigReader() {
         BufferedReader reader = null;
         try {
-            reader = new BufferedReader(new InputStreamReader(new FileInputStream("weatherFor.json")));
-        } catch (FileNotFoundException e) {
+            reader = new BufferedReader(new InputStreamReader(new FileInputStream("weatherFor.json"), "UTF8"));
+        } catch (FileNotFoundException | UnsupportedEncodingException e) {
             e.printStackTrace();
             System.exit(0);
         }
