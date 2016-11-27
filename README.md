@@ -10,7 +10,7 @@ Only support chinese cell phone number.
 {
   "nums": [
     {
-      "num": "18651242070", // cell phone number
+      "num": "18600000000", // cell phone number
       "location": "nanjing" // cell phone number's location
     }
   ],
@@ -20,3 +20,12 @@ Only support chinese cell phone number.
   "interval": 24 // Interval time(/h)
 }
 ```
+
+## Develop
+Implement interface `WeatherClient` to define your weather server.   
+Implement interface `Message` to define your sms or email setting.   
+
+Then `App app = new App()` and `app.addSend(new YourMessage())` in `main(String... args)` method.  
+You can define your `WeatherClient` and `Message` interaction logic in method `App.run()`.  
+
+Finally, execute `app.run()`.
