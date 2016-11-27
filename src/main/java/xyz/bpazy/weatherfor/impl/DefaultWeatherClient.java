@@ -11,10 +11,12 @@ import xyz.bpazy.weatherfor.models.XinZhiModel;
  */
 public class DefaultWeatherClient implements WeatherClient<XinZhiModel> {
 
+    private static final String KEY = "lyiogbra1v2euq1k";
+
     @Override
     public XinZhiModel getDailyWeather(String city, int start, int days) {
         String body = HttpRequest.get("https://api.thinkpage.cn/v3/weather/daily.json", true,
-                "key", "lyiogbra1v2euq1k",
+                "key", KEY,
                 "location", city,
                 "start", start,
                 "days", days).body();

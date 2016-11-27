@@ -1,17 +1,22 @@
 WeatherFor
 ======
-定时短信提醒天气  
+SMS or email to remind the weather at regular time. 
+
+## Attention
+Only support chinese cell phone number.
 
 ## Usage
 ```
 {
-  "nums": [ // 待提醒号码
-    "18651242070", 
-    "15651298066"
+  "nums": [
+    {
+      "num": "18651242070", // cell phone number
+      "location": "nanjing" // cell phone number's location
+    }
   ],
-  "hour": 24, // 开始的hour
-  "minute": 0, // min
-  "second": 0, // sec
-  "interval": 24 //间隔时间，单位hour
+  "hour": 12, // Start time.
+  "minute": 12,
+  "second": 30,
+  "interval": 24 // Interval time(/h)
 }
 ```

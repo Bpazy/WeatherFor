@@ -8,8 +8,8 @@ import java.util.List;
  */
 public class Config {
     /**
-     * nums : ["18651242070","15651298066"]
-     * hour : 24
+     * nums : [{"num":"18651242070","location":"nanjing"}]
+     * hour : 23
      * minute : 0
      * second : 0
      * interval : 24
@@ -19,18 +19,7 @@ public class Config {
     private int minute;
     private int second;
     private int interval;
-    private List<String> nums;
-
-    @Override
-    public String toString() {
-        return "Config{" +
-                "hour=" + hour +
-                ", minute=" + minute +
-                ", second=" + second +
-                ", interval=" + interval +
-                ", nums=" + nums +
-                '}';
-    }
+    private List<NumsBean> nums;
 
     public int getHour() {
         return hour;
@@ -64,11 +53,37 @@ public class Config {
         this.interval = interval;
     }
 
-    public List<String> getNums() {
+    public List<NumsBean> getNums() {
         return nums;
     }
 
-    public void setNums(List<String> nums) {
+    public void setNums(List<NumsBean> nums) {
         this.nums = nums;
+    }
+
+    public static class NumsBean {
+        /**
+         * num : 18651242070
+         * location : nanjing
+         */
+
+        private String num;
+        private String location;
+
+        public String getNum() {
+            return num;
+        }
+
+        public void setNum(String num) {
+            this.num = num;
+        }
+
+        public String getLocation() {
+            return location;
+        }
+
+        public void setLocation(String location) {
+            this.location = location;
+        }
     }
 }
