@@ -8,6 +8,7 @@ import xyz.bpazy.weatherfor.models.Config;
 
 import java.io.*;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Timer;
 
 /**
@@ -19,7 +20,7 @@ public class Main {
         BufferedReader reader = getConfigReader();
         Config config = JsonUtils.fromJson(reader, Config.class);
         Timer timer = new Timer();
-        Calendar calendar = getCalendarFromConfig(config);
+        Date time = getCalendarFromConfig(config);
         timer.schedule(new Activity() {
             @Override
             public void exec() {
@@ -27,7 +28,7 @@ public class Main {
                 app.addSender(new AliMessage());
                 app.run();
             }
-        }, calendar.getTime(), config.getInterval() * 1000 * 60 * 60);
+        }, time, config.getInterval() * 1000 * 60 * 60);
     }
 
     private static BufferedReader getConfigReader() {
@@ -41,11 +42,12 @@ public class Main {
         return reader;
     }
 
-    private static Calendar getCalendarFromConfig(Config config) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR_OF_DAY, config.getHour());
-        calendar.set(Calendar.MINUTE, config.getMinute());
-        calendar.set(Calendar.SECOND, config.getSecond());
-        return calendar;
+    private static Date getCalendarFromConfig(Config config) {
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.HOUR_OF_DAY, config.getHour());
+        cal.set(Calendar.MINUTE, config.getMinute());
+        cal.set(Calendar.SECOND, config.getSecond());
+        if (cal.getTime().before(new Date())) cal.add(Calendar.DAY_OF_MONTH, 1);
+        return cal.getTime();
     }
 }
