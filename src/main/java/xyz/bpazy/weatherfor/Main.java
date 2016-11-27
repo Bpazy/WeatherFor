@@ -36,7 +36,7 @@ public class Main {
     private static BufferedReader getConfigReader() {
         BufferedReader reader = null;
         try {
-            reader = new BufferedReader(new InputStreamReader(new FileInputStream("example/weatherFor.json")));
+            reader = new BufferedReader(new InputStreamReader(new FileInputStream("weatherFor.json")));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             System.exit(0);
