@@ -43,7 +43,6 @@ public class AliMessage implements Message {
             System.out.println(rsp.getBody());
         } catch (ApiException e) {
             e.printStackTrace();
-            System.exit(1);
         }
     }
 }
