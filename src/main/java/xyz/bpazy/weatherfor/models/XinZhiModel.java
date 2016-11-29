@@ -1,5 +1,7 @@
 package xyz.bpazy.weatherfor.models;
 
+import xyz.bpazy.weatherfor.api.WeatherDaily;
+
 import java.util.List;
 
 /**
@@ -125,7 +127,7 @@ public class XinZhiModel {
             }
         }
 
-        public static class DailyBean {
+        public static class DailyBean implements WeatherDaily {
             /**
              * date : 2016-11-26
              * text_day : 霾
@@ -170,6 +172,38 @@ public class XinZhiModel {
                 this.text_day = text_day;
             }
 
+            public String getLow() {
+                return low;
+            }
+
+            public String getHigh() {
+                return high;
+            }
+
+            public void setHigh(String high) {
+                this.high = high;
+            }
+
+            public String getWindDirection() {
+                return wind_direction;
+            }
+
+            public void setWindDirection(String wind_direction) {
+                this.wind_direction = wind_direction;
+            }
+
+            public String getWindScale() {
+                return wind_scale;
+            }
+
+            public void setWindScale(String wind_scale) {
+                this.wind_scale = wind_scale;
+            }
+
+            public void setLow(String low) {
+                this.low = low;
+            }
+
             public String getCodeDay() {
                 return code_day;
             }
@@ -194,36 +228,12 @@ public class XinZhiModel {
                 this.code_night = code_night;
             }
 
-            public String getHigh() {
-                return high;
-            }
-
-            public void setHigh(String high) {
-                this.high = high;
-            }
-
-            public String getLow() {
-                return low;
-            }
-
-            public void setLow(String low) {
-                this.low = low;
-            }
-
             public String getPrecip() {
                 return precip;
             }
 
             public void setPrecip(String precip) {
                 this.precip = precip;
-            }
-
-            public String getWindDirection() {
-                return wind_direction;
-            }
-
-            public void setWindDirection(String wind_direction) {
-                this.wind_direction = wind_direction;
             }
 
             public String getWindDirectionDegree() {
@@ -240,14 +250,6 @@ public class XinZhiModel {
 
             public void setWindSpeed(String wind_speed) {
                 this.wind_speed = wind_speed;
-            }
-
-            public String getWindScale() {
-                return wind_scale;
-            }
-
-            public void setWindScale(String wind_scale) {
-                this.wind_scale = wind_scale;
             }
         }
     }
