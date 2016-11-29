@@ -2,9 +2,9 @@ package xyz.bpazy.weatherfor.impl;
 
 import xyz.bpazy.weatherfor.api.Message;
 import xyz.bpazy.weatherfor.api.WeatherClient;
-import xyz.bpazy.weatherfor.api.WeatherDaily;
 import xyz.bpazy.weatherfor.models.Config;
 import xyz.bpazy.weatherfor.models.XinZhiModel;
+import xyz.bpazy.weatherfor.models.XinZhiModel.XinZhiModelResult.DailyBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.List;
  * 2016/11/26 22:45
  */
 public class App {
-    private ArrayList<Message<WeatherDaily>> sender = new ArrayList<>();
+    private ArrayList<Message<DailyBean>> sender = new ArrayList<>();
     private Config config;
 
     public App(Config config) {
@@ -29,7 +29,7 @@ public class App {
                 List<XinZhiModel.XinZhiModelResult> results =
                         weatherClient.getDailyWeather(numBean.getLocation(), 0, 1).getResults();
                 XinZhiModel.XinZhiModelResult xinZhiModelResult = results.get(0);
-                for (Message<WeatherDaily> m : sender) {
+                for (Message<DailyBean> m : sender) {
                     m.sendMessage(numBean.getNum(), xinZhiModelResult.getDaily().get(0));
                 }
             } catch (Exception e) {
@@ -38,12 +38,12 @@ public class App {
         }
     }
 
-    public void setSender(Message message) {
+    public void setSender(Message<DailyBean> message) {
         sender.clear();
         sender.add(message);
     }
 
-    public void addSender(Message message) {
+    public void addSender(Message<DailyBean> message) {
         sender.add(message);
     }
 }

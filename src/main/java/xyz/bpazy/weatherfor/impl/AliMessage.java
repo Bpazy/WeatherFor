@@ -8,19 +8,19 @@ import com.taobao.api.response.AlibabaAliqinFcSmsNumSendResponse;
 import xyz.bpazy.weatherfor.api.Message;
 import xyz.bpazy.weatherfor.helper.JsonUtils;
 import xyz.bpazy.weatherfor.models.SmsWeather;
-import xyz.bpazy.weatherfor.models.XinZhiModel;
+import xyz.bpazy.weatherfor.models.XinZhiModel.XinZhiModelResult.DailyBean;
 
 /**
  * Created by Ziyuan.
  * 2016/11/27 11:48
  */
-public class AliMessage implements Message<XinZhiModel.XinZhiModelResult.DailyBean> {
+public class AliMessage implements Message<DailyBean> {
     private String url = "http://gw.api.taobao.com/router/rest";
     private String appkey = "23547902";
     private String secret = "411d353292ea57c0689579d84fad6fc8";
 
     @Override
-    public void sendMessage(String target, XinZhiModel.XinZhiModelResult.DailyBean daily) {
+    public void sendMessage(String target, DailyBean daily) {
         TaobaoClient client = new DefaultTaobaoClient(url, appkey, secret);
         AlibabaAliqinFcSmsNumSendRequest req = new AlibabaAliqinFcSmsNumSendRequest();
         req.setSmsType("normal");
