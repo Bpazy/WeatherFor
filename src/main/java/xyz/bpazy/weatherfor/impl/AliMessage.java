@@ -14,7 +14,7 @@ import xyz.bpazy.weatherfor.models.XinZhiModel;
  * Created by Ziyuan.
  * 2016/11/27 11:48
  */
-public class AliMessage implements Message {
+public class AliMessage implements Message<XinZhiModel.XinZhiModelResult.DailyBean> {
     private String url = "http://gw.api.taobao.com/router/rest";
     private String appkey = "23547902";
     private String secret = "411d353292ea57c0689579d84fad6fc8";
@@ -24,9 +24,9 @@ public class AliMessage implements Message {
         TaobaoClient client = new DefaultTaobaoClient(url, appkey, secret);
         AlibabaAliqinFcSmsNumSendRequest req = new AlibabaAliqinFcSmsNumSendRequest();
         req.setSmsType("normal");
-        req.setSmsFreeSignName("×ÓÔªÌìÆø");
+        req.setSmsFreeSignName("å­å…ƒå¤©æ°”");
         SmsWeather weather2 = new SmsWeather();
-        String content = String.format("%s %s¡æ-%s¡æ %s·ç%s¼¶", // ¶àÔÆ 1¡æ-12¡æ ±±ÄÏ·ç3¼¶
+        String content = String.format("%s %sâ„ƒ-%sâ„ƒ %sé£%sçº§", // å¤šäº‘ 1â„ƒ-12â„ƒ åŒ—å—é£3çº§
                 daily.getTextDay(),
                 daily.getLow(),
                 daily.getHigh(),
