@@ -2,6 +2,7 @@ package xyz.bpazy.weatherfor.impl;
 
 import xyz.bpazy.weatherfor.api.Message;
 import xyz.bpazy.weatherfor.api.WeatherClient;
+import xyz.bpazy.weatherfor.helper.ConfigHelper;
 import xyz.bpazy.weatherfor.models.Config;
 import xyz.bpazy.weatherfor.models.XinZhiModel;
 import xyz.bpazy.weatherfor.models.XinZhiModel.XinZhiModelResult.DailyBean;
@@ -15,14 +16,9 @@ import java.util.List;
  */
 public class App {
     private ArrayList<Message<DailyBean>> sender = new ArrayList<>();
-    private Config config;
-
-    public App(Config config) {
-        this.config = config;
-    }
 
     public void run() {
-        List<Config.NumsBean> nums = config.getNums();
+        List<Config.NumsBean> nums = ConfigHelper.getConfig().getNums();
         WeatherClient<XinZhiModel> weatherClient = new DefaultWeatherClient();
         for (Config.NumsBean numBean : nums) {
             try {
@@ -36,11 +32,6 @@ public class App {
                 e.printStackTrace();
             }
         }
-    }
-
-    public void setSender(Message<DailyBean> message) {
-        sender.clear();
-        sender.add(message);
     }
 
     public void addSender(Message<DailyBean> message) {

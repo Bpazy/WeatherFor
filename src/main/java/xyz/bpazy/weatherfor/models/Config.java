@@ -1,5 +1,7 @@
 package xyz.bpazy.weatherfor.models;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -20,6 +22,15 @@ public class Config {
     private int second;
     private int interval;
     private List<NumsBean> nums;
+    
+    public Date getDate() {
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.HOUR_OF_DAY, this.getHour());
+        cal.set(Calendar.MINUTE, this.getMinute());
+        cal.set(Calendar.SECOND, this.getSecond());
+        if (cal.getTime().before(new Date())) cal.add(Calendar.DAY_OF_MONTH, 1);
+        return cal.getTime();
+    }
 
     public int getHour() {
         return hour;
