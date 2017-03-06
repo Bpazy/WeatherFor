@@ -1,5 +1,7 @@
 package xyz.bpazy.weatherfor;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import xyz.bpazy.weatherfor.api.Activity;
 import xyz.bpazy.weatherfor.helper.ConfigHelper;
 import xyz.bpazy.weatherfor.helper.JsonUtils;
@@ -17,8 +19,11 @@ import java.util.Timer;
  * 2016/11/27 11:28
  */
 public class Main {
+    private static Logger logger = LoggerFactory.getLogger(Main.class);
+
     public static void main(String[] args) {
         Config config = ConfigHelper.getConfig();
+        logger.info("载入配置文件成功: {}", config);
         Timer timer = new Timer();
         timer.schedule(new Activity() {
             @Override

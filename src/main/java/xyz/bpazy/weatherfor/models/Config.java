@@ -9,20 +9,13 @@ import java.util.List;
  * 2016/11/27 0:54
  */
 public class Config {
-    /**
-     * nums : [{"num":"18651242070","location":"nanjing"}]
-     * hour : 23
-     * minute : 0
-     * second : 0
-     * interval : 24
-     */
 
     private int hour;
     private int minute;
     private int second;
     private int interval;
-    private List<NumsBean> nums;
-    
+    private List<Nums> nums;
+
     public Date getDate() {
         Calendar cal = Calendar.getInstance();
         cal.set(Calendar.HOUR_OF_DAY, this.getHour());
@@ -64,19 +57,26 @@ public class Config {
         this.interval = interval;
     }
 
-    public List<NumsBean> getNums() {
+    public List<Nums> getNums() {
         return nums;
     }
 
-    public void setNums(List<NumsBean> nums) {
+    public void setNums(List<Nums> nums) {
         this.nums = nums;
     }
 
-    public static class NumsBean {
-        /**
-         * num : 18651242070
-         * location : nanjing
-         */
+    @Override
+    public String toString() {
+        return "Config{" +
+                "hour=" + hour +
+                ", minute=" + minute +
+                ", second=" + second +
+                ", interval=" + interval +
+                ", nums=" + nums +
+                '}';
+    }
+
+    public static class Nums {
 
         private String num;
         private String location;
@@ -95,6 +95,14 @@ public class Config {
 
         public void setLocation(String location) {
             this.location = location;
+        }
+
+        @Override
+        public String toString() {
+            return "Nums{" +
+                    "num='" + num + '\'' +
+                    ", location='" + location + '\'' +
+                    '}';
         }
     }
 }

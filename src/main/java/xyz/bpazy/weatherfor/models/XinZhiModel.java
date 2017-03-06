@@ -19,29 +19,33 @@ public class XinZhiModel {
         this.results = results;
     }
 
+    @Override
+    public String toString() {
+        return "XinZhiModel{" +
+                "results=" + results +
+                '}';
+    }
+
     public static class XinZhiModelResult {
-        /**
-         * location : {"id":"WX4FBXXFKE4F","name":"北京","country":"CN","path":"北京,北京,中国","timezone":"Asia/Shanghai",
-         * "timezone_offset":"+08:00"}
-         * daily : [{"date":"2016-11-26","text_day":"霾","code_day":"31","text_night":"霾","code_night":"31",
-         * "high":"8","low":"-1","precip":"","wind_direction":"无持续风向","wind_direction_degree":"0","wind_speed":"10",
-         * "wind_scale":"2"},{"date":"2016-11-27","text_day":"晴","code_day":"0","text_night":"晴","code_night":"0",
-         * "high":"7","low":"-5","precip":"","wind_direction":"无持续风向","wind_direction_degree":"","wind_speed":"15",
-         * "wind_scale":"3"},{"date":"2016-11-28","text_day":"晴","code_day":"0","text_night":"霾","code_night":"31",
-         * "high":"7","low":"-4","precip":"","wind_direction":"无持续风向","wind_direction_degree":"","wind_speed":"10",
-         * "wind_scale":"2"}]
-         * last_update : 2016-11-26T18:00:00+08:00
-         */
 
-        private LocationBean location;
+        private Location location;
         private String last_update;
-        private List<DailyBean> daily;
+        private List<Daily> daily;
 
-        public LocationBean getLocation() {
+        @Override
+        public String toString() {
+            return "XinZhiModelResult{" +
+                    "location=" + location +
+                    ", last_update='" + last_update + '\'' +
+                    ", daily=" + daily +
+                    '}';
+        }
+
+        public Location getLocation() {
             return location;
         }
 
-        public void setLocation(LocationBean location) {
+        public void setLocation(Location location) {
             this.location = location;
         }
 
@@ -53,23 +57,15 @@ public class XinZhiModel {
             this.last_update = last_update;
         }
 
-        public List<DailyBean> getDaily() {
+        public List<Daily> getDaily() {
             return daily;
         }
 
-        public void setDaily(List<DailyBean> daily) {
+        public void setDaily(List<Daily> daily) {
             this.daily = daily;
         }
 
-        public static class LocationBean {
-            /**
-             * id : WX4FBXXFKE4F
-             * name : 北京
-             * country : CN
-             * path : 北京,北京,中国
-             * timezone : Asia/Shanghai
-             * timezone_offset : +08:00
-             */
+        public static class Location {
 
             private String id;
             private String name;
@@ -77,6 +73,18 @@ public class XinZhiModel {
             private String path;
             private String timezone;
             private String timezone_offset;
+
+            @Override
+            public String toString() {
+                return "Location{" +
+                        "id='" + id + '\'' +
+                        ", name='" + name + '\'' +
+                        ", country='" + country + '\'' +
+                        ", path='" + path + '\'' +
+                        ", timezone='" + timezone + '\'' +
+                        ", timezone_offset='" + timezone_offset + '\'' +
+                        '}';
+            }
 
             public String getId() {
                 return id;
@@ -127,21 +135,7 @@ public class XinZhiModel {
             }
         }
 
-        public static class DailyBean implements WeatherDaily {
-            /**
-             * date : 2016-11-26
-             * text_day : 霾
-             * code_day : 31
-             * text_night : 霾
-             * code_night : 31
-             * high : 8
-             * low : -1
-             * precip :
-             * wind_direction : 无持续风向
-             * wind_direction_degree : 0
-             * wind_speed : 10
-             * wind_scale : 2
-             */
+        public static class Daily implements WeatherDaily {
 
             private String date;
             private String text_day;
@@ -155,6 +149,24 @@ public class XinZhiModel {
             private String wind_direction_degree;
             private String wind_speed;
             private String wind_scale;
+
+            @Override
+            public String toString() {
+                return "Daily{" +
+                        "date='" + date + '\'' +
+                        ", text_day='" + text_day + '\'' +
+                        ", code_day='" + code_day + '\'' +
+                        ", text_night='" + text_night + '\'' +
+                        ", code_night='" + code_night + '\'' +
+                        ", high='" + high + '\'' +
+                        ", low='" + low + '\'' +
+                        ", precip='" + precip + '\'' +
+                        ", wind_direction='" + wind_direction + '\'' +
+                        ", wind_direction_degree='" + wind_direction_degree + '\'' +
+                        ", wind_speed='" + wind_speed + '\'' +
+                        ", wind_scale='" + wind_scale + '\'' +
+                        '}';
+            }
 
             public String getDate() {
                 return date;
