@@ -2,3 +2,6 @@
 .gradle/
 .idea/
 build/
+weatherFor.json
+weatherfor.log
+alidayu.json

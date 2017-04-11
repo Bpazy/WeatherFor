@@ -2,7 +2,7 @@ package xyz.bpazy.weatherfor.helper;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import xyz.bpazy.weatherfor.models.Config;
+import xyz.bpazy.weatherfor.base.config.Config;
 
 import java.io.*;
 

@@ -2,15 +2,8 @@
   "nums": [
     {
       "num": "18651242070",
-      "location": "nanjing"
-    },
-    {
-      "num": "15651298066",
-      "location": "yancheng"
+      "location": "nanjing",
+      "cron": "* * 7 * * ?"
     }
-  ],
-  "hour": 7,
-  "minute": 0,
-  "second": 0,
-  "interval": 24
+  ]
 }

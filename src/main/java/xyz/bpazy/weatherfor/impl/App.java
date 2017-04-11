@@ -4,8 +4,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import xyz.bpazy.weatherfor.api.Message;
 import xyz.bpazy.weatherfor.api.WeatherClient;
+import xyz.bpazy.weatherfor.base.config.Num;
 import xyz.bpazy.weatherfor.helper.ConfigHelper;
-import xyz.bpazy.weatherfor.models.Config;
 import xyz.bpazy.weatherfor.models.XinZhiModel;
 import xyz.bpazy.weatherfor.models.XinZhiModel.XinZhiModelResult.Daily;
 
@@ -23,16 +23,16 @@ public class App {
 
     public void run() {
         logger.info("App run.{}", LocalDateTime.now());
-        List<Config.Nums> nums = ConfigHelper.getConfig().getNums();
+        List<Num> nums = ConfigHelper.getConfig().getNums();
         WeatherClient<XinZhiModel> weatherClient = new DefaultWeatherClient();
-        for (Config.Nums numBean : nums) {
+        for (Num num : nums) {
             try {
                 List<XinZhiModel.XinZhiModelResult> results =
-                        weatherClient.getDailyWeather(numBean.getLocation(), 0, 1).getResults();
+                        weatherClient.getDailyWeather(num.getLocation(), 0, 1).getResults();
                 XinZhiModel.XinZhiModelResult xinZhiModelResult = results.get(0);
                 logger.info("Weather: {}", xinZhiModelResult);
                 for (Message<Daily> m : sender) {
-                    m.sendMessage(numBean.getNum(), xinZhiModelResult.getDaily().get(0));
+                    m.sendMessage(num.getNum(), xinZhiModelResult.getDaily().get(0));
                 }
             } catch (Exception e) {
                 logger.error("网络错误", e);
