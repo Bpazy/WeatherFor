@@ -21,7 +21,7 @@ import java.io.*;
  */
 public class AliMessage implements Message<Daily> {
     private static final String url = "http://gw.api.taobao.com/router/rest";
-    private static DayuAppKey appKey;
+    private DayuAppKey appKey;
 
     public AliMessage() {
         appKey = getConfig();
