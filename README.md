@@ -10,17 +10,14 @@ Only support chinese cell phone number.
 {
   "nums": [
     {
-      "num": "18600000000", // cell phone number
-      "location": "nanjing" // cell phone number's location
+      "num": "18612342345",
+      "location": "nanjing",
+      "cron": "* * 7 * * ?"
     }
-  ],
-  "hour": 12, // Start time.
-  "minute": 12,
-  "second": 30,
-  "interval": 24 // Interval time(/h)
+  ]
 }
 ```
-
+[cron expression help](http://www.quartz-scheduler.org/documentation/quartz-2.2.x/tutorials/tutorial-lesson-06.html)
 ## Develop
 Implement interface `WeatherClient` to define your weather server.   
 Implement interface `Message` to define your sms or email setting.   
