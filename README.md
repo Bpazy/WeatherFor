@@ -36,7 +36,6 @@ Finally, execute `app.run()`.
 
 ### Docker
 ```
-mkdir WeatherFor
 vim weatherFor.json  // 你的weatherFor配置文件
 vim alidayu.json     // 你的阿里大于配置文件
 docker run -d -v ./weatherFor.json:/home/gradle/WeatherFor/weatherFor.json \
