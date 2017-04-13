@@ -7,6 +7,7 @@ Only support chinese cell phone number.
 
 ## Usage
 ```
+# weatherFor.json
 {
   "nums": [
     {
@@ -15,6 +16,12 @@ Only support chinese cell phone number.
       "cron": "* * 7 * * ?"
     }
   ]
+}
+
+# alidayu.json
+{
+  "appKey": "your appKey",
+  "appSecret": "your appSecret"
 }
 ```
 [cron expression help](http://www.quartz-scheduler.org/documentation/quartz-2.2.x/tutorials/tutorial-lesson-06.html)
@@ -26,3 +33,11 @@ Then `App app = new App()` and `app.addSend(new YourMessage())` in `main(String.
 You can define your `WeatherClient` and `Message` interaction logic in method `App.run()`.  
 
 Finally, execute `app.run()`.
+
+### Docker
+```
+mkdir WeatherFor
+vim WeatherFor/weatherFor.json  // 你的weatherFor配置文件
+vim WeatherFor/alidayu.json     // 你的阿里大于配置文件
+docker run -d -v $(pwd)/WeatherFor:/root/WeatherFor hanziyuan08/weatherfor
+```
