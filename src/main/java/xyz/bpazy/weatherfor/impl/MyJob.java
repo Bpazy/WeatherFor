@@ -9,9 +9,12 @@ import org.quartz.JobExecutionException;
  * on 2017/4/11
  */
 public class MyJob implements Job {
+
     @Override
     public void execute(JobExecutionContext context) throws JobExecutionException {
-        App app = new App();
+        String location = (String) context.getJobDetail().getJobDataMap().get("location");
+        String number = (String) context.getJobDetail().getJobDataMap().get("number");
+        App app = new App(location, number);
         app.addSender(new AliMessage());
         app.run();
     }
